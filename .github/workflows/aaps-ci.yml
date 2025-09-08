@@ -164,10 +164,11 @@ jobs:
           fi
 
       - name: Upload APKs as Artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: aaps-${{ env.VERSION }}${{ env.VERSION_SUFFIX }}
-          path: |
-            aaps-${{ env.VERSION }}${{ env.VERSION_SUFFIX }}.apk
-            aaps-wear-${{ env.VERSION }}${{ env.VERSION_SUFFIX }}.apk
-          retention-days: 14
+  uses: actions/upload-artifact@v4
+  with:
+    name: aaps-${{ env.VERSION }}${{ env.VERSION_SUFFIX }}
+    path: |
+      aaps-${{ env.VERSION }}${{ env.VERSION_SUFFIX }}.apk
+      aaps-wear-${{ env.VERSION }}${{ env.VERSION_SUFFIX }}.apk
+    if-no-files-found: ignore
+    retention-days: 14
