@@ -53,13 +53,7 @@ jobs:
         run: |
           echo "🔍 Checking required secrets..."
           MISSING=0
-          check_secret() {
-            if [ -z "$1" ]; then
-              echo "❌ Missing secret: $2"
-              MISSING=1
-            fi
-          }
-          # wymagane (bez Google Drive)
+          check_secret() { if [ -z "$1" ]; then echo "❌ Missing secret: $2"; MISSING=1; fi; }
           check_secret "$KEYSTORE_BASE64" "KEYSTORE_BASE64"
           check_secret "$KEYSTORE_PASSWORD" "KEYSTORE_PASSWORD"
           check_secret "$KEY_ALIAS" "KEY_ALIAS"
@@ -163,7 +157,7 @@ jobs:
             echo "ℹ️ No wear APK found at $WEAR_SRC (ok if you didn't build wear)."
           fi
 
-      name: Upload APKs as Artifacts
+      - name: Upload APKs as Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: aaps-${{ env.VERSION }}${{ env.VERSION_SUFFIX }}
