@@ -163,12 +163,12 @@ jobs:
             echo "ℹ️ No wear APK found at $WEAR_SRC (ok if you didn't build wear)."
           fi
 
-      - name: Upload APKs as Artifacts
-  uses: actions/upload-artifact@v4
-  with:
-    name: aaps-${{ env.VERSION }}${{ env.VERSION_SUFFIX }}
-    path: |
-      aaps-${{ env.VERSION }}${{ env.VERSION_SUFFIX }}.apk
-      aaps-wear-${{ env.VERSION }}${{ env.VERSION_SUFFIX }}.apk
-    if-no-files-found: ignore
-    retention-days: 14
+      name: Upload APKs as Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: aaps-${{ env.VERSION }}${{ env.VERSION_SUFFIX }}
+          path: |
+            aaps-${{ env.VERSION }}${{ env.VERSION_SUFFIX }}.apk
+            aaps-wear-${{ env.VERSION }}${{ env.VERSION_SUFFIX }}.apk
+          if-no-files-found: ignore
+          retention-days: 14
